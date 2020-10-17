@@ -7,7 +7,9 @@ Material Design URL shortener with React and Material-UI
 
 ## 📷 Screenshots
 
-WIP
+|                     Light                     |                    Dark                     |
+| :-------------------------------------------: | :-----------------------------------------: |
+| ![Demo image (light)](.github/demo-light.png) | ![Demo image (dark)](.github/demo-dark.png) |
 
 ## 📃 License
 
