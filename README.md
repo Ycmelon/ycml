@@ -3,6 +3,8 @@
 ![React](https://img.shields.io/badge/made%20with-React-ff5252.svg)
 ![GitHub licence](https://img.shields.io/github/license/Ycmelon/ycml?color=ff5252)
 
+[ Site | [API](https://github.com/Ycmelon/ycml-api) ]
+
 Material Design URL shortener with React and Material-UI
 
 ## 📷 Screenshots
