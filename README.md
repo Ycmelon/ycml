@@ -1,4 +1,4 @@
-# 🍉 Ycml (API)
+# 🍉 Ycml
 
 ![React](https://img.shields.io/badge/made%20with-React-ff5252.svg)
 ![GitHub licence](https://img.shields.io/github/license/Ycmelon/ycml?color=ff5252)
