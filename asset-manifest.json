@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/ycml/static/css/main.79727219.chunk.css",
-    "main.js": "/ycml/static/js/main.8e2f01fb.chunk.js",
-    "main.js.map": "/ycml/static/js/main.8e2f01fb.chunk.js.map",
-    "runtime-main.js": "/ycml/static/js/runtime-main.93475954.js",
-    "runtime-main.js.map": "/ycml/static/js/runtime-main.93475954.js.map",
-    "static/css/2.670498f6.chunk.css": "/ycml/static/css/2.670498f6.chunk.css",
-    "static/js/2.e3d64adc.chunk.js": "/ycml/static/js/2.e3d64adc.chunk.js",
-    "static/js/2.e3d64adc.chunk.js.map": "/ycml/static/js/2.e3d64adc.chunk.js.map",
-    "index.html": "/ycml/index.html",
-    "precache-manifest.6efb582c1ac98a014eedf84fcea45222.js": "/ycml/precache-manifest.6efb582c1ac98a014eedf84fcea45222.js",
-    "service-worker.js": "/ycml/service-worker.js",
-    "static/css/2.670498f6.chunk.css.map": "/ycml/static/css/2.670498f6.chunk.css.map",
-    "static/css/main.79727219.chunk.css.map": "/ycml/static/css/main.79727219.chunk.css.map",
-    "static/js/2.e3d64adc.chunk.js.LICENSE.txt": "/ycml/static/js/2.e3d64adc.chunk.js.LICENSE.txt",
-    "static/media/content-cut.66eaad04.svg": "/ycml/static/media/content-cut.66eaad04.svg",
-    "static/media/github.d150d4d6.svg": "/ycml/static/media/github.d150d4d6.svg",
-    "static/media/index.css": "/ycml/static/media/roboto-vietnamese-400-normal.a8be5b46.woff2",
-    "static/media/scissors-cutting.7f896575.svg": "/ycml/static/media/scissors-cutting.7f896575.svg"
+    "main.css": "./static/css/main.79727219.chunk.css",
+    "main.js": "./static/js/main.7be3cc6b.chunk.js",
+    "main.js.map": "./static/js/main.7be3cc6b.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.247ede64.js",
+    "runtime-main.js.map": "./static/js/runtime-main.247ede64.js.map",
+    "static/css/2.d8dc3702.chunk.css": "./static/css/2.d8dc3702.chunk.css",
+    "static/js/2.e3d64adc.chunk.js": "./static/js/2.e3d64adc.chunk.js",
+    "static/js/2.e3d64adc.chunk.js.map": "./static/js/2.e3d64adc.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.08b6f5768473bff41983135dc66573ea.js": "./precache-manifest.08b6f5768473bff41983135dc66573ea.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.d8dc3702.chunk.css.map": "./static/css/2.d8dc3702.chunk.css.map",
+    "static/css/main.79727219.chunk.css.map": "./static/css/main.79727219.chunk.css.map",
+    "static/js/2.e3d64adc.chunk.js.LICENSE.txt": "./static/js/2.e3d64adc.chunk.js.LICENSE.txt",
+    "static/media/content-cut.66eaad04.svg": "./static/media/content-cut.66eaad04.svg",
+    "static/media/github.d150d4d6.svg": "./static/media/github.d150d4d6.svg",
+    "static/media/index.css": "./static/media/roboto-vietnamese-400-normal.a8be5b46.woff2",
+    "static/media/scissors-cutting.7f896575.svg": "./static/media/scissors-cutting.7f896575.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.93475954.js",
-    "static/css/2.670498f6.chunk.css",
+    "static/js/runtime-main.247ede64.js",
+    "static/css/2.d8dc3702.chunk.css",
     "static/js/2.e3d64adc.chunk.js",
     "static/css/main.79727219.chunk.css",
-    "static/js/main.8e2f01fb.chunk.js"
+    "static/js/main.7be3cc6b.chunk.js"
   ]
 }
