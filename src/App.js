@@ -18,7 +18,7 @@ import { ReactComponent as GitHubLogo } from "./github.svg";
 import { ReactComponent as ContentCutLogo } from "./content-cut.svg";
 import { ReactComponent as ScissorsCuttingLogo } from "./scissors-cutting.svg";
 
-const apiUrl = "http://localhost:8000/";
+const apiUrl = "https://ycml.ml/";
 const errors = {
   empty: "This field is required!",
   invalidUrl: "This URL is invalid!",
@@ -30,18 +30,6 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1) + " 0",
       width: "30ch",
     },
-  },
-  buttonProgress: {
-    position: "absolute",
-    // top: "50%",
-    // left: "50%",
-    // marginTop: -12,
-    // marginLeft: -12,
-  },
-  wrapper: {
-    // margin: theme.spacing(1),
-    position: "relative",
-    alignItems: "center",
   },
 }));
 
@@ -214,41 +202,35 @@ class AppClass extends React.Component {
               />
               <br />
               <br />
-              <div className={this.props.classes.wrapper}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  disabled={this.state.loading}
-                  startIcon={
-                    this.state.loading ? (
-                      <CircularProgress size={24} color="white" />
-                    ) : (
-                      <SvgIcon
-                        component={
-                          this.state.success
-                            ? ScissorsCuttingLogo
-                            : ContentCutLogo
-                        }
-                      />
-                    )
-                  }
-                >
-                  Shorten
-                </Button>
-                {/* {this.state.loading && (
-                  <CircularProgress
-                    size={24}
-                    className={this.props.classes.buttonProgress}
-                  />
-                )} */}
-              </div>
-
-              {/* <br />
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                disabled={this.state.loading}
+                startIcon={
+                  this.state.loading ? (
+                    <CircularProgress size={24} color="white" />
+                  ) : (
+                    <SvgIcon
+                      component={
+                        this.state.success
+                          ? ScissorsCuttingLogo
+                          : ContentCutLogo
+                      }
+                    />
+                  )
+                }
+              >
+                Shorten
+              </Button>
               <br />
-              <Button variant="outlined" startIcon={<GitHubLogo />}>
-                Star on GitHub
-              </Button> */}
+              <br />
+              <Button
+                href="https://github.com/Ycmelon/ycml"
+                startIcon={<SvgIcon component={GitHubLogo} />}
+              >
+                GitHub
+              </Button>
             </div>
           </form>
         </div>
