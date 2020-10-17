@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/ycml-app/static/css/main.79727219.chunk.css",
+    "main.js": "/ycml-app/static/js/main.852bfa37.chunk.js",
+    "main.js.map": "/ycml-app/static/js/main.852bfa37.chunk.js.map",
+    "runtime-main.js": "/ycml-app/static/js/runtime-main.19d05277.js",
+    "runtime-main.js.map": "/ycml-app/static/js/runtime-main.19d05277.js.map",
+    "static/css/2.a2c5ab2b.chunk.css": "/ycml-app/static/css/2.a2c5ab2b.chunk.css",
+    "static/js/2.e3d64adc.chunk.js": "/ycml-app/static/js/2.e3d64adc.chunk.js",
+    "static/js/2.e3d64adc.chunk.js.map": "/ycml-app/static/js/2.e3d64adc.chunk.js.map",
+    "index.html": "/ycml-app/index.html",
+    "precache-manifest.a24f607a72d0e19d2a7102064e22d920.js": "/ycml-app/precache-manifest.a24f607a72d0e19d2a7102064e22d920.js",
+    "service-worker.js": "/ycml-app/service-worker.js",
+    "static/css/2.a2c5ab2b.chunk.css.map": "/ycml-app/static/css/2.a2c5ab2b.chunk.css.map",
+    "static/css/main.79727219.chunk.css.map": "/ycml-app/static/css/main.79727219.chunk.css.map",
+    "static/js/2.e3d64adc.chunk.js.LICENSE.txt": "/ycml-app/static/js/2.e3d64adc.chunk.js.LICENSE.txt",
+    "static/media/content-cut.66eaad04.svg": "/ycml-app/static/media/content-cut.66eaad04.svg",
+    "static/media/github.d150d4d6.svg": "/ycml-app/static/media/github.d150d4d6.svg",
+    "static/media/index.css": "/ycml-app/static/media/roboto-vietnamese-400-normal.a8be5b46.woff2",
+    "static/media/scissors-cutting.7f896575.svg": "/ycml-app/static/media/scissors-cutting.7f896575.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.19d05277.js",
+    "static/css/2.a2c5ab2b.chunk.css",
+    "static/js/2.e3d64adc.chunk.js",
+    "static/css/main.79727219.chunk.css",
+    "static/js/main.852bfa37.chunk.js"
+  ]
+}
