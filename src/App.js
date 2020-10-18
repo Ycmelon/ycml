@@ -6,6 +6,7 @@ import {
   Snackbar,
   CircularProgress,
   SvgIcon,
+  InputAdornment,
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -175,6 +176,7 @@ class AppClass extends React.Component {
                 error={this.state.longform.error}
                 helperText={this.state.longform.helperText}
                 value={this.state.longform.value}
+                placeholder="e.g. https://www.google.com/"
                 onChange={(event) => {
                   this.setState({
                     longform: {
@@ -191,6 +193,11 @@ class AppClass extends React.Component {
                 error={this.state.shortform.error}
                 helperText={this.state.shortform.helperText}
                 value={this.state.shortform.value}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">ycml.ml/</InputAdornment>
+                  ),
+                }}
                 onChange={(event) => {
                   this.setState({
                     shortform: {
