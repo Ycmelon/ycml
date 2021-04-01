@@ -11,6 +11,7 @@ jobs:
 
       - name: Install and deploy
         run: |
+          cd ./ui
           yarn install
           yarn deploy
 
