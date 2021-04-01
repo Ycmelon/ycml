@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b53306a2099f50ccb992600ad215d5a0",
+    "revision": "bccd15eebf06d17735e86803950f9538",
     "url": "./index.html"
   },
   {
-    "revision": "06b7647bc6404c16b8c5",
+    "revision": "946d0717c58ad2bd7fc6",
     "url": "./static/css/2.d8dc3702.chunk.css"
   },
   {
-    "revision": "f301c5e79a1d9dbc2a10",
-    "url": "./static/css/main.76bfc36a.chunk.css"
+    "revision": "ec866f1e3825aafeafb2",
+    "url": "./static/css/main.09e1e752.chunk.css"
   },
   {
-    "revision": "06b7647bc6404c16b8c5",
-    "url": "./static/js/2.848301cf.chunk.js"
+    "revision": "946d0717c58ad2bd7fc6",
+    "url": "./static/js/2.d838387f.chunk.js"
   },
   {
     "revision": "6397acf4c5cafcd591a770ce33fc3e2f",
-    "url": "./static/js/2.848301cf.chunk.js.LICENSE.txt"
+    "url": "./static/js/2.d838387f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f301c5e79a1d9dbc2a10",
-    "url": "./static/js/main.3c6feb23.chunk.js"
+    "revision": "ec866f1e3825aafeafb2",
+    "url": "./static/js/main.2e7dda60.chunk.js"
   },
   {
     "revision": "52ee92a4e48b4577e4e9",
@@ -100,7 +100,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/media/roboto-vietnamese-400-normal.a8be5b46.woff2"
   },
   {
-    "revision": "7f89657594b436675587c05713a0723f",
-    "url": "./static/media/scissors-cutting.7f896575.svg"
+    "revision": "d03bd9f8907a3e65870b4aa0ca7f0d2b",
+    "url": "./static/media/scissors-cutting.d03bd9f8.svg"
   }
 ]);
