@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, FC } from "react";
 
 import {
   TextField,
@@ -35,14 +35,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const verifyURL = (string: string): boolean => {
+function verifyURL(string: string): boolean {
   try {
     let url = new URL(string);
     return url.protocol === "http:" || url.protocol === "https:";
   } catch {
     return false;
   }
-};
+}
 
 interface SnackbarState {
   open: boolean;
@@ -61,7 +61,7 @@ const emptyInputState: InputState = {
   helperText: undefined,
 };
 
-const App = (props: { classes: any }) => {
+const App: FC<{ classes: any }> = (props: { classes: any }) => {
   const [longform, setLongform] = useState<InputState>(emptyInputState);
   const [shortform, setShortform] = useState<InputState>(emptyInputState);
   const [snackbar, setSnackbar] = useState<SnackbarState>({
@@ -71,14 +71,14 @@ const App = (props: { classes: any }) => {
   const [success, setSuccess] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const setInput = (type: "longform" | "shortform", state: InputState) => {
+  function setInput(type: "longform" | "shortform", state: InputState) {
     if (type === "longform")
       setLongform((previous) => ({ ...previous, ...state }));
     else if (type === "shortform")
       setShortform((previous) => ({ ...state, ...state }));
-  };
+  }
 
-  const validate = (event: React.FormEvent<HTMLFormElement>) => {
+  function validateAndSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     // Reset
@@ -101,9 +101,9 @@ const App = (props: { classes: any }) => {
     }
 
     submit(longform.value, shortform.value);
-  };
+  }
 
-  const submit = async (longform: string, shortform: string) => {
+  async function submit(longform: string, shortform: string) {
     let response, responseJson;
     try {
       setLoading(true);
@@ -118,22 +118,22 @@ const App = (props: { classes: any }) => {
         }),
       });
       responseJson = await response.json();
-
-      setSnackbar({ open: true, message: responseJson.message });
-      setSuccess(responseJson.success);
-
-      // Clear inputs & copy to clipboard
-      setInput("shortform", { value: "" });
-      if (responseJson.success) {
-        setInput("longform", { value: "" });
-        await navigator.clipboard.writeText(apiUrl + shortform);
-      }
     } catch (error) {
       setSnackbar({ open: true, message: "error" });
     } finally {
       setLoading(false);
     }
-  };
+
+    setSnackbar({ open: true, message: responseJson.message });
+    setSuccess(responseJson.success);
+
+    // Clear inputs & copy to clipboard
+    setInput("shortform", { value: "" });
+    if (responseJson.success) {
+      setInput("longform", { value: "" });
+      await navigator.clipboard.writeText(apiUrl + shortform);
+    }
+  }
 
   return (
     <>
@@ -144,9 +144,10 @@ const App = (props: { classes: any }) => {
           </span>{" "}
           Ycml.ml
         </Typography>
+
         <form
           className={props.classes.root}
-          onSubmit={validate}
+          onSubmit={validateAndSubmit}
           autoComplete="off"
           noValidate
           action="submitted"
