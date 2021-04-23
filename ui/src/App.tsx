@@ -144,7 +144,6 @@ const App: FC<{ classes: any }> = (props: { classes: any }) => {
           </span>{" "}
           Ycml.ml
         </Typography>
-
         <form
           className={props.classes.root}
           onSubmit={validateAndSubmit}
