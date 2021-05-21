@@ -204,7 +204,7 @@ const App: FC<{ classes: any }> = (props: { classes: any }) => {
   );
 };
 
-export default (props: any) => {
+const Main = (props: any) => {
   const classes = useStyles();
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = useMemo(
@@ -224,3 +224,5 @@ export default (props: any) => {
     </ThemeProvider>
   );
 };
+
+export default Main;
