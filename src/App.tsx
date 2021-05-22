@@ -8,7 +8,7 @@ import { AliasRedirect, Create } from "./routes";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-const Main = (props: any) => {
+const Main = () => {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = useMemo(
     () =>
@@ -23,7 +23,7 @@ const Main = (props: any) => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={Create} />
           <Route path="/:alias" component={AliasRedirect} />
