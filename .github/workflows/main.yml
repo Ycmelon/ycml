@@ -3,21 +3,18 @@ on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./ui
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.1
 
       - name: Install and build
         run: |
-          cd ./ui
           yarn install
           yarn build
-          echo create.ycml.ml > build/CNAME
+          echo ycml.ml > build/CNAME
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.0
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: ui/build # The folder the action should deploy.
+          folder: build # The folder the action should deploy.

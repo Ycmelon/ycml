@@ -1,4 +1,5 @@
-import React, { useState, useMemo, FC } from "react";
+import React, { useState, FC } from "react";
+import { SnackbarState, InputState } from "../types";
 
 import {
   TextField,
@@ -10,58 +11,25 @@ import {
   InputAdornment,
   IconButton,
 } from "@material-ui/core";
+
+import { GitHubLogo, ContentCutLogo, ScissorsCuttingLogo } from "../assets";
 import {
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { GitHubLogo, ContentCutLogo, ScissorsCuttingLogo } from "./assets";
+  emptyInputState,
+  messages,
+  verifyURL,
+  baseUrl,
+  useStyles,
+} from "../constants";
 
-const apiUrl = "https://ycml.ml/";
+import firebase_ from "firebase/app";
+import "firebase/firestore";
 
-const errors = {
-  empty: "This field is required!",
-  invalidUrl: "This URL is invalid!",
-};
+const Create: FC = () => {
+  const classes = useStyles();
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& .MuiTextField-root": {
-      margin: theme.spacing(1) + " 0",
-      width: "30ch",
-    },
-  },
-}));
+  const firebase = firebase_.apps[0];
+  const db = firebase.firestore();
 
-function verifyURL(string: string): boolean {
-  try {
-    let url = new URL(string);
-    return url.protocol === "http:" || url.protocol === "https:";
-  } catch {
-    return false;
-  }
-}
-
-interface SnackbarState {
-  open: boolean;
-  message?: string;
-}
-
-interface InputState {
-  value?: string;
-  error?: boolean;
-  helperText?: string;
-}
-
-const emptyInputState: InputState = {
-  value: "",
-  error: false,
-  helperText: undefined,
-};
-
-const App: FC<{ classes: any }> = (props: { classes: any }) => {
   const [longform, setLongform] = useState<InputState>(emptyInputState);
   const [shortform, setShortform] = useState<InputState>(emptyInputState);
   const [snackbar, setSnackbar] = useState<SnackbarState>({
@@ -80,6 +48,7 @@ const App: FC<{ classes: any }> = (props: { classes: any }) => {
 
   function validateAndSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setSuccess(false);
 
     // Reset
     setInput("longform", { error: false, helperText: undefined });
@@ -87,16 +56,16 @@ const App: FC<{ classes: any }> = (props: { classes: any }) => {
 
     // Check empty
     if (!longform.value) {
-      setInput("longform", { error: true, helperText: errors.empty });
+      setInput("longform", { error: true, helperText: messages.empty });
       return;
     } else if (!shortform.value) {
-      setInput("shortform", { error: true, helperText: errors.empty });
+      setInput("shortform", { error: true, helperText: messages.empty });
       return;
     }
 
     // Check URL
     if (!verifyURL(longform.value)) {
-      setInput("longform", { error: true, helperText: errors.invalidUrl });
+      setInput("longform", { error: true, helperText: messages.invalidUrl });
       return;
     }
 
@@ -104,34 +73,29 @@ const App: FC<{ classes: any }> = (props: { classes: any }) => {
   }
 
   async function submit(longform: string, shortform: string) {
-    let response, responseJson;
+    setLoading(true);
+
     try {
-      setLoading(true);
-      response = await fetch(apiUrl + "create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "text/plain",
-        },
-        body: JSON.stringify({
-          longform: longform,
-          shortform: shortform,
-        }),
-      });
-      responseJson = await response.json();
+      const checkQuery = await db
+        .collection("urls")
+        .where("alias", "==", shortform)
+        .get();
+      if (!checkQuery.empty) {
+        setSnackbar({ open: true, message: messages.taken });
+        setInput("shortform", { value: "" });
+        return;
+      }
+      await db.collection("urls").add({ url: longform, alias: shortform });
+
+      setSuccess(true);
+      setSnackbar({ open: true, message: messages.success });
+      setInput("longform", { value: "" });
+      await navigator.clipboard.writeText(baseUrl + shortform);
     } catch (error) {
-      setSnackbar({ open: true, message: "error" });
+      setSnackbar({ open: true, message: `Unknown error: ${error}` });
     } finally {
       setLoading(false);
-    }
-
-    setSnackbar({ open: true, message: responseJson.message });
-    setSuccess(responseJson.success);
-
-    // Clear inputs & copy to clipboard
-    setInput("shortform", { value: "" });
-    if (responseJson.success) {
-      setInput("longform", { value: "" });
-      await navigator.clipboard.writeText(apiUrl + shortform);
+      setInput("shortform", { value: "" });
     }
   }
 
@@ -145,7 +109,7 @@ const App: FC<{ classes: any }> = (props: { classes: any }) => {
           Ycml.ml
         </Typography>
         <form
-          className={props.classes.root}
+          className={classes.root}
           onSubmit={validateAndSubmit}
           autoComplete="off"
           noValidate
@@ -204,25 +168,4 @@ const App: FC<{ classes: any }> = (props: { classes: any }) => {
   );
 };
 
-const Main = (props: any) => {
-  const classes = useStyles();
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const theme = useMemo(
-    () =>
-      createMuiTheme({
-        palette: {
-          type: prefersDarkMode ? "dark" : "light",
-        },
-      }),
-    [prefersDarkMode]
-  );
-
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App classes={classes} {...props} />
-    </ThemeProvider>
-  );
-};
-
-export default Main;
+export default Create;
