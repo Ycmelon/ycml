@@ -1,6 +1,5 @@
-import React, { useState, FC } from "react";
+import React, { useState, useMemo } from "react";
 import { SnackbarState, InputState } from "../types";
-
 import {
   TextField,
   Button,
@@ -24,11 +23,13 @@ import {
 import firebase_ from "firebase/app";
 import "firebase/firestore";
 
-const Create: FC = () => {
+const Create = () => {
   const classes = useStyles();
 
-  const firebase = firebase_.apps[0];
-  const db = firebase.firestore();
+  const db = useMemo(() => {
+    const firebase = firebase_.apps[0];
+    return firebase.firestore();
+  }, []);
 
   const [longform, setLongform] = useState<InputState>(emptyInputState);
   const [shortform, setShortform] = useState<InputState>(emptyInputState);
@@ -43,7 +44,7 @@ const Create: FC = () => {
     if (type === "longform")
       setLongform((previous) => ({ ...previous, ...state }));
     else if (type === "shortform")
-      setShortform((previous) => ({ ...state, ...state }));
+      setShortform((previous) => ({ ...previous, ...state }));
   }
 
   function validateAndSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -80,6 +81,7 @@ const Create: FC = () => {
         .collection("urls")
         .where("alias", "==", shortform)
         .get();
+
       if (!checkQuery.empty) {
         setSnackbar({ open: true, message: messages.taken });
         setInput("shortform", { value: "" });
@@ -102,7 +104,7 @@ const Create: FC = () => {
   return (
     <>
       <div className="center">
-        <Typography variant="h4" component="h2" gutterBottom>
+        <Typography variant="h4" component="h1" gutterBottom>
           <span role="img" aria-label="Watermelon emoji">
             🍉
           </span>{" "}
@@ -137,6 +139,7 @@ const Create: FC = () => {
                 setInput("shortform", { value: event.target.value })
               }
             />
+
             <div>
               <Button
                 variant="contained"

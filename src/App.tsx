@@ -1,11 +1,10 @@
 import React, { useMemo } from "react";
 
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import { AliasRedirect, Create } from "./routes";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Main = () => {
